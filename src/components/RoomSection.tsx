@@ -312,9 +312,10 @@ export function RoomSection() {
                   >
                     <Button 
                       onClick={handleWhatsApp}
-                      className="w-full h-16 md:h-20 text-lg font-bold uppercase tracking-widest shadow-2xl shadow-primary/30 gap-4"
+                      className="w-full h-14 md:h-20 text-sm md:text-lg font-bold uppercase tracking-widest shadow-2xl shadow-primary/30 gap-3 md:gap-4 px-4"
                     >
-                      <MessageCircle className="size-7" /> Confirmer sur WhatsApp
+                      <MessageCircle className="size-5 md:size-7 shrink-0" /> 
+                      <span className="truncate">Confirmer sur WhatsApp</span>
                     </Button>
                     <p className="text-[10px] text-center text-muted-foreground mt-4 uppercase tracking-[0.2em]">Réponse généralement en moins de 15 minutes</p>
                   </motion.div>
