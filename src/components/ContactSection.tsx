@@ -73,7 +73,7 @@ export function ContactSection() {
             </div>
 
             <Button 
-              onClick={() => window.open('https://wa.me/22625332363?text=Bonjour%2C%20j%27ai%20une%20question%20concernant%20vos%20services.', '_blank')}
+              onClick={() => window.open('https://wa.me/22672222212?text=Bonjour%2C%20j%27ai%20une%20question%20concernant%20vos%20services.', '_blank')}
               className="w-full h-16 text-lg font-bold uppercase tracking-widest shadow-xl shadow-primary/20 gap-3"
             >
               <MessageCircle className="size-6" /> Discuter avec nous

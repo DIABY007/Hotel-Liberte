@@ -5,7 +5,7 @@ import { MessageCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export function WhatsAppButton() {
-  const phoneNumber = "22625332363"; // Numéro de l'hôtel (à adapter si besoin)
+  const phoneNumber = "22672222212"; // Numéro de l'hôtel (à adapter si besoin)
   const message = encodeURIComponent("Bonjour Hôtel de la Liberté, je souhaiterais avoir des informations pour une réservation.");
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
 

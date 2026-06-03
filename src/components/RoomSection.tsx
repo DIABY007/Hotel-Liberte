@@ -88,7 +88,7 @@ export function RoomSection() {
 
   const handleWhatsApp = () => {
     if (!activeRoom) return;
-    const phoneNumber = "22625332363";
+    const phoneNumber = "22672222212";
     const message = encodeURIComponent(
       `Bonjour Hôtel de la Liberté,\n\nJe souhaite réserver :\n- Chambre : ${activeRoom.title}\n- Option : ${selectedOption}\n- Personnes : ${guests}\n- Arrivée le : ${arrivalDate || "Non précisé"}\n- Vers : ${arrivalTime || "Non précisé"}\n- Durée : ${duration} nuit(s)\n\nMerci de me confirmer la disponibilité.`
     );
