@@ -102,69 +102,86 @@ export function Navbar() {
       </header>
 
       {/* Manual Mobile Menu Overlay */}
-      {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-[9998] flex justify-end">
-          <div 
-            onClick={() => setIsMobileMenuOpen(false)}
-            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
-          />
-          <div
-            className={cn(
-              "relative w-[85vw] max-w-sm bg-background shadow-2xl z-[9999] flex flex-col p-6 pt-10 transition-transform duration-300",
-              isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
-            )}
-          >
-            <div className="flex items-center justify-between mb-10">
-              <span className="font-heading text-xl font-bold text-primary uppercase tracking-tighter">Navigation</span>
-              <button 
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="size-10 flex items-center justify-center rounded-full bg-muted text-foreground active:scale-90 transition-transform"
-              >
-                <X className="size-6" />
-              </button>
-            </div>
-
-            <nav className="flex flex-col gap-2 overflow-y-auto">
-              {navItems.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
+      <AnimatePresence mode="wait">
+        {isMobileMenuOpen && (
+          <div className="fixed inset-0 z-[9998] flex justify-end">
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+            />
+            <motion.div
+              initial={{ x: "100%", opacity: 0.5 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: "100%", opacity: 0.5 }}
+              transition={{ type: "spring", damping: 30, stiffness: 300, mass: 0.8 }}
+              className="relative w-[85vw] max-w-sm bg-background shadow-2xl z-[9999] flex flex-col p-6 pt-10"
+            >
+              <div className="flex items-center justify-between mb-10">
+                <span className="font-heading text-xl font-bold text-primary uppercase tracking-tighter">Navigation</span>
+                <button 
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="flex items-center justify-between py-4 border-b border-border/50 text-xl font-heading hover:text-primary transition-colors group"
+                  className="size-10 flex items-center justify-center rounded-full bg-muted text-foreground active:scale-90 transition-transform"
                 >
-                  {item.name}
-                  <ChevronRight className="size-5 text-muted-foreground group-hover:text-primary transition-colors" />
-                </Link>
-              ))}
-            </nav>
-
-            <div className="mt-auto space-y-6 pt-8 border-t">
-              <div className="space-y-4">
-                <div className="flex items-center gap-4 text-muted-foreground">
-                  <div className="size-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                    <Phone className="size-5" />
-                  </div>
-                  <span className="text-sm font-medium">+226 25 33 23 63</span>
-                </div>
-                <div className="flex items-center gap-4 text-muted-foreground">
-                  <div className="size-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                    <Mail className="size-5" />
-                  </div>
-                  <span className="text-sm font-medium text-xs">hotelliberte@gmail.com</span>
-                </div>
+                  <X className="size-6" />
+                </button>
               </div>
-              
-              <Link 
-                href="#contact" 
-                onClick={() => setIsMobileMenuOpen(false)}
-                className={cn(buttonVariants({ size: "lg" }), "w-full py-7 text-base uppercase tracking-widest font-bold shadow-lg shadow-primary/20")}
+
+              <nav className="flex flex-col gap-2 overflow-y-auto">
+                {navItems.map((item, i) => (
+                  <motion.div
+                    key={item.name}
+                    initial={{ x: 20, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ delay: 0.1 + i * 0.05 }}
+                  >
+                    <Link
+                      href={item.href}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="flex items-center justify-between py-4 border-b border-border/50 text-xl font-heading hover:text-primary transition-colors group"
+                    >
+                      {item.name}
+                      <ChevronRight className="size-5 text-muted-foreground group-hover:text-primary transition-colors translate-x-0 group-hover:translate-x-1 transition-transform" />
+                    </Link>
+                  </motion.div>
+                ))}
+              </nav>
+
+              <motion.div 
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.4 }}
+                className="mt-auto space-y-6 pt-8 border-t"
               >
-                Réserver maintenant
-              </Link>
-            </div>
+                <div className="space-y-4">
+                  <div className="flex items-center gap-4 text-muted-foreground">
+                    <div className="size-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                      <Phone className="size-5" />
+                    </div>
+                    <span className="text-sm font-medium">+226 25 33 23 63</span>
+                  </div>
+                  <div className="flex items-center gap-4 text-muted-foreground">
+                    <div className="size-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                      <Mail className="size-5" />
+                    </div>
+                    <span className="text-sm font-medium text-xs">hotelliberte@gmail.com</span>
+                  </div>
+                </div>
+                
+                <Link 
+                  href="#contact" 
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={cn(buttonVariants({ size: "lg" }), "w-full py-7 text-base uppercase tracking-widest font-bold shadow-lg shadow-primary/20")}
+                >
+                  Réserver maintenant
+                </Link>
+              </motion.div>
+            </motion.div>
           </div>
-        </div>
-      )}
+        )}
+      </AnimatePresence>
     </>
   );
 }
