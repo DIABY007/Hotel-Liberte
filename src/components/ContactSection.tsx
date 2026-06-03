@@ -19,11 +19,10 @@ export function ContactSection() {
             </p>
           </div>
 
-          <div className="relative aspect-video lg:aspect-square rounded-3xl overflow-hidden shadow-2xl border border-white/10">
+          <div className="relative aspect-video lg:aspect-square rounded-3xl overflow-hidden shadow-2xl border border-white/10 min-h-[300px] w-full">
             <iframe 
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3899.146872560237!2d-1.566463914357278!3d12.238332957107938!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xe2e99cd7a5ece9f%3A0x8d28f57a89b0c593!2zSMO0dGVsIExpYmVydMOp!5e0!3m2!1sfr!2sde!4v1780461224909!5m2!1sfr!2sde" 
-              width="100%" 
-              height="100%" 
+              className="absolute inset-0 w-full h-full pointer-events-auto"
               style={{ border: 0 }} 
               allowFullScreen={true} 
               loading="lazy" 
